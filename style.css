@@ -395,6 +395,77 @@ p {
   font-weight: 200;
 }
 
+.home-post p {
+  font-size: 1.35rem;
+}
+.home-post h5 {
+  font-size: 2.2rem;
+  font-weight: 300;
+  margin: 0.3rem;
+}
+
+.post-featured h1 {
+  font-weight: 200;
+  font-size: 3rem;
+}
+
+.posts-flex-container h2 {
+  font-weight: 200;
+  font-size: 2.4rem;
+}
+
+.site-main-single-post h1 {
+  font-weight: 200;
+  font-size: 3rem;
+}
+.site-main-single-post p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+.site-main-single-post a {
+  line-height: 1.6rem;
+}
+
+.latest-posts .latest-post-title {
+  font-weight: 200;
+  font-size: 2.4rem;
+}
+
+.category-ai {
+  font-weight: 800;
+}
+
+.category-tech {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.category-dev {
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+.category-society {
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.category-experiences {
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+.category-guides {
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.category-ai-tools {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
 .site-header .site-branding {
   display: flex;
   max-width: 1340px;
@@ -535,7 +606,7 @@ footer {
   background-color: #FFD300;
   position: relative;
   min-height: 300px;
-  padding: 3rem 0rem 3.2rem 0rem;
+  padding: 0rem 0rem 3.2rem 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -554,6 +625,27 @@ footer .site-info .about, footer .site-info .legal, footer .site-info .socials {
 footer .site-info .about ul, footer .site-info .legal ul, footer .site-info .socials ul {
   list-style: none;
   padding: 0;
+}
+footer .site-info .about ul li a, footer .site-info .legal ul li a, footer .site-info .socials ul li a {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+footer .site-info .about ul li a::after, footer .site-info .legal ul li a::after, footer .site-info .socials ul li a::after {
+  content: "";
+  transition: all 0.2s ease-in-out;
+  width: 0%;
+  height: 1px;
+  position: absolute;
+  background-color: black;
+  left: 0;
+  bottom: 0;
+}
+footer .site-info .about ul li a:hover, footer .site-info .legal ul li a:hover, footer .site-info .socials ul li a:hover {
+  opacity: 0.7;
+}
+footer .site-info .about ul li a:hover::after, footer .site-info .legal ul li a:hover::after, footer .site-info .socials ul li a:hover::after {
+  width: 80%;
+  opacity: 0.3;
 }
 footer .site-info .socials-wrapper {
   display: flex;
@@ -605,6 +697,7 @@ footer .copy-claim p {
   height: 300px;
   width: 25%;
   overflow: hidden;
+  align-self: flex-end;
 }
 .post-featured__righty img {
   -o-object-fit: cover;
@@ -619,10 +712,12 @@ footer .copy-claim p {
   justify-content: space-between;
   width: 90%;
   padding-left: 7%;
-  margin: 0 auto;
+  margin: 0 auto 10rem auto;
 }
 .posts-flex-container .post-featured-23 {
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
   max-width: 500px;
 }
 .posts-flex-container .post-featured-23__lefty {
@@ -645,6 +740,7 @@ footer .copy-claim p {
   width: 100%;
   overflow: hidden;
   margin-top: 1rem;
+  align-self: flex-end;
 }
 .posts-flex-container .post-featured-23__righty img {
   -o-object-fit: cover;
@@ -652,4 +748,84 @@ footer .copy-claim p {
   -o-object-position: center;
      object-position: center;
   height: 100%;
+}
+
+.home-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  padding-left: 7%;
+  margin: 3rem auto;
+  padding: 3rem 0rem;
+  border-bottom: 1px solid black;
+  height: 260px;
+}
+.home-post__lefty {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 300px;
+  align-self: flex-start;
+  height: 100%;
+}
+.home-post__center {
+  height: 250px;
+  width: 250px;
+  overflow: hidden;
+}
+.home-post__center img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  height: 100%;
+}
+.home-post__righty {
+  max-width: 250px;
+}
+
+.archive-title {
+  font-size: 3.5rem;
+  margin: 3rem auto;
+  padding: 3rem 3rem;
+}
+
+.site-main-single-post {
+  display: flex;
+  min-height: 300px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 7%;
+  width: 90%;
+  flex-wrap: wrap;
+  margin: 120px auto;
+}
+.site-main-single-post h1 {
+  width: 100%;
+}
+.site-main-single-post .info-single {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+.site-main-single-post .content-single {
+  margin: 1.4rem 0rem;
+}
+.site-main-single-post .content-single a {
+  text-decoration: underline;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+.site-main-single-post .content-single a:hover {
+  opacity: 0.5;
+}
+
+.latest-posts .latest-post-title {
+  margin: 3rem auto;
+  padding: 3rem 0rem;
+  left: 7%;
+  width: 90%;
+  margin: 120px auto;
 }

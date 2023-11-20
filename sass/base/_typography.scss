@@ -73,3 +73,75 @@ p{
         }
     }
 }
+.home-post{
+    p{
+        font-size: 1.35rem;
+    }
+    h5{
+        font-size: 2.2rem;
+        font-weight: 300;
+        margin: .3rem;
+    }
+}
+.post-featured{
+    h1{
+        font-weight: 200;
+        font-size: 3rem;
+    }
+}
+.posts-flex-container{
+    h2{
+        font-weight: 200;
+        font-size: 2.4rem;
+    }
+}
+.site-main-single-post{
+   h1{
+    font-weight: 200;
+    font-size: 3rem;
+   }
+   p{
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+   }
+   a{
+
+    line-height: 1.6rem;
+   }
+}
+.latest-posts{
+    .latest-post-title{
+        font-weight: 200;
+        font-size: 2.4rem;
+    }
+}
+
+//CATEGORIES
+.category-ai {
+    font-weight: 800;
+}
+.category-tech{
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.category-dev{
+    font-weight: 400;
+    text-transform: lowercase;
+}
+.category-society{
+    font-weight: 700;
+    text-transform: lowercase;
+}
+.category-experiences{
+    font-weight: 200;
+    text-transform: uppercase;
+}
+.category-guides{
+    font-weight: 500;
+    text-transform: lowercase;
+}
+.category-ai-tools{
+    font-weight: 300;
+    text-transform: uppercase;
+}

@@ -1,0 +1,40 @@
+.site-main-single-post{
+    display: flex;
+    min-height:300px;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 7%;
+    width: 90%;
+    flex-wrap: wrap;
+    margin: 120px auto;
+    h1{
+        width: 100%;
+    }
+    .info-single{
+        display: flex; 
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.2rem;
+    }
+    .content-single{
+        margin: 1.4rem 0rem;
+        a{
+            text-decoration: underline;
+            font-weight: 600;
+            transition: all .2s ease-in-out;
+            &:hover{
+                opacity: .5;
+            }
+        }
+    }
+}
+.latest-posts{
+    .latest-post-title{
+        margin: 3rem auto;
+        padding: 3rem 0rem;
+        left: 7%;
+        width: 90%;
+        margin: 120px auto;
+
+    }
+}

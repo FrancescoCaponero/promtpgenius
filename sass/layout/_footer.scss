@@ -2,7 +2,7 @@ footer{
     background-color: $footer-color;
     position: relative;
     min-height: 300px;
-    padding: 3rem 0rem 3.2rem 0rem;
+    padding: 0rem 0rem 3.2rem 0rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +18,29 @@ footer{
             ul{
                 list-style: none;
                 padding: 0;
+                li{
+                    a{
+                        position: relative;
+                        transition: all .2s ease-in-out;
+                        &::after{
+                            content: '';
+                            transition: all .2s ease-in-out;
+                            width: 0%;
+                            height: 1px;
+                            position: absolute;
+                            background-color: black;
+                            left: 0;
+                            bottom: 0;
+                        }
+                        &:hover{
+                            opacity: .7;
+                            &::after{
+                                width: 80%;
+                                opacity: .3;
+                            }  
+                        }
+                    }
+                }
             }
         }
         .socials-wrapper{

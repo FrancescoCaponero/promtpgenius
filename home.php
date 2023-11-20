@@ -27,14 +27,21 @@
                 ?>
                  <article class="post-featured">
                     <div class="post-featured__lefty">
-                        <h1><?php the_title(); ?></h1>
+                    <a  href="<?php the_permalink(); ?>"><h1><?= the_title() ?></h1></a>
                         <p><?php the_excerpt(); ?></p>
                         <div class="post-featured__lefty--foot">
-                            <?php 
-                            $category = get_the_category(); 
-                            $firstCategorySlug = $category[0]->slug;
+                        <?php 
+                            $categories = get_the_category();
+                            $category_class = '';
+                            if ( ! empty( $categories ) ) {
+                                $category_name = $categories[0]->slug; 
+                                $category_class = 'category-' . $category_name;
+                                $firstCategorySlug = $categories[0]->slug;
+                            }
                             ?>
-                            <a href="<?php echo esc_url( home_url( '/' ) . $firstCategorySlug ); ?>"><?= $category[0]->name; ?></a>
+                            <a class="<?php echo $category_class; ?>" href="<?php echo esc_url( home_url( '/' ) . $firstCategorySlug ); ?>">
+                                <?php echo $categories[0]->name; ?>
+                            </a>
                             <p><?php the_author(); ?></p>
                         </div>
                     </div>
@@ -54,14 +61,21 @@
 
                 <article class="post-featured-23">
                     <div class="post-featured-23__lefty">
-                        <h2><?php the_title(); ?></h2>
+                    <a  href="<?php the_permalink(); ?>"><h2><?= the_title() ?></h2></a>
                         <p><?php the_excerpt(); ?></p>
                         <div class="post-featured-23__lefty--foot">
                             <?php 
-                            $category = get_the_category(); 
-                            $firstCategorySlug = $category[0]->slug;
+                            $categories = get_the_category();
+                            $category_class = '';
+                            if ( ! empty( $categories ) ) {
+                                $category_name = $categories[0]->slug; 
+                                $category_class = 'category-' . $category_name;
+                                $firstCategorySlug = $categories[0]->slug;
+                            }
                             ?>
-                            <a href="<?php echo esc_url( home_url( '/' ) . $firstCategorySlug ); ?>"><?= $category[0]->name; ?></a>
+                            <a class="<?php echo $category_class; ?>" href="<?php echo esc_url( home_url( '/' ) . $firstCategorySlug ); ?>">
+                                <?php echo $categories[0]->name; ?>
+                            </a>
                             <p><?php the_author(); ?></p>
                         </div>
                     </div>
@@ -103,12 +117,36 @@
         while ($query->have_posts()) {
             $query->the_post();
             ?>
-            <div class="post">
-                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <div class="entry-content">
-                    <?php get_the_content(); ?>
+                <div class="home-post">
+                    <?php 
+                    $categories = get_the_category();
+                    $category_class = '';
+                    if ( ! empty( $categories ) ) {
+                        $category_name = $categories[0]->slug; 
+                        $category_class = 'category-' . $category_name;
+                        $firstCategorySlug = $categories[0]->slug;
+                    }
+                    ?>   
+                    <div class="home-post__lefty">
+                        <a  href="<?php the_permalink(); ?>"><h5><?= the_title() ?></h5></a>
+                        <div>
+                        <a class="<?php echo $category_class; ?>" href="<?php echo esc_url( home_url( '/' ) . $firstCategorySlug ); ?>">
+                            <?php echo $categories[0]->name; ?>
+                        </a>
+                        <p><?php the_author(); ?></p>
+                        </div>
+                    </div>
+                    <div class="home-post__center">
+                        <?php
+                            if ( has_post_thumbnail() ) {
+                                the_post_thumbnail();
+                            }
+                        ?>
+                    </div>
+                    <div class="home-post__righty">
+                        <p><?php the_excerpt(); ?></p>
+                    </div>
                 </div>
-            </div>
             <?php
         }
     } else {
