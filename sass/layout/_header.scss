@@ -1,0 +1,35 @@
+.site-header{
+    .site-branding{
+        display: flex;
+        max-width: 1340px;
+        width: 90%;
+        margin: 1rem auto;
+        position: fixed;
+        left: 140px;
+        top: 20px;
+        a:nth-child(2){
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all .25s ease-in;
+            opacity: .5;
+        }
+        .custom-logo-link{
+            width: 47px;
+            height: 62px;
+            img{
+                object-fit: contain;
+                object-position: left;
+                height: 100%;
+            }
+            &:hover{
+                &:nth-child(2){
+                    transform: translateX(4px);
+                }
+            }
+        }
+        .ham-menu-mobile{
+            display: none;
+        }
+    }
+}

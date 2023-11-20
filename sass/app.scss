@@ -1,0 +1,30 @@
+// Import variables, mixins, and functions
+@import 'abstracts/_theme.scss';
+@import 'abstracts/_normalize.scss';
+@import 'abstracts/_variables.scss';
+@import 'abstracts/_mixins.scss';
+@import 'abstracts/_functions.scss';
+
+// Import base styles
+@import 'base/_typography.scss';
+
+// Import component styles
+@import 'components/_buttons.scss';
+@import 'components/_forms.scss';
+
+// Import layout styles
+@import 'layout/_header.scss';
+@import 'layout/_nav.scss';
+@import 'layout/_footer.scss';
+
+// Import page-specific styles
+@import 'pages/_home.scss';
+
+// Import utilities
+@import 'utilities/_helpers.scss';
+@import 'utilities/_animations.scss';
+@import 'utilities/_transitions.scss';
+
+// Import vendor styles
+@import 'vendors/_bootstrap.scss';
+@import 'vendors/_font-awesome.scss';

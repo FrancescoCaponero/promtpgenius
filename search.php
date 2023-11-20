@@ -41,7 +41,6 @@ get_header();
 
 		else :
 
-			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
 		?>
@@ -49,5 +48,4 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

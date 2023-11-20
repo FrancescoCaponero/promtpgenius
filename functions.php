@@ -49,9 +49,18 @@ function promptgenius_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'promptgenius' ),
+			'primary' => esc_html__( 'Primary', 'promptgenius' ),
+			'secondary' => esc_html__( 'Secondary', 'promptgenius' ),
+			'footer-about' => esc_html__( 'Footer About', 'promptgenius' ),
+			'footer-legal' => esc_html__( 'Footer Legal', 'promptgenius' ),
 		)
 	);
+
+	function add_custom_fonts() {
+		wp_enqueue_style('darker-grotesque-font', 'https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap');
+	}
+	add_action('wp_enqueue_scripts', 'add_custom_fonts');
+	
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -138,41 +147,185 @@ add_action( 'widgets_init', 'promptgenius_widgets_init' );
  * Enqueue scripts and styles.
  */
 function promptgenius_scripts() {
-	wp_enqueue_style( 'promptgenius-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'promptgenius-style', 'rtl', 'replace' );
+    wp_enqueue_style('promptgenius-style', get_stylesheet_uri(), array(), _S_VERSION);
 
-	wp_enqueue_script( 'promptgenius-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+    wp_enqueue_script('promptgenius-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
+    wp_enqueue_script('promptgenius-custom-script', get_template_directory_uri() . '/js/script.js', array('jquery'), _S_VERSION, true);
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+    // Aggiungi qui il tuo script ajaxEvents.js
+    wp_enqueue_script('ajax-events-script', get_template_directory_uri() . '/js/ajaxEvents.js', array('jquery'), null, true);
+    wp_localize_script('ajax-events-script', 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'promptgenius_scripts' );
+add_action('wp_enqueue_scripts', 'promptgenius_scripts');
 
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
+// HANDLER AJAX
+add_action('wp_ajax_load_more_articles', 'load_more_articles_handler');
+add_action('wp_ajax_nopriv_load_more_articles', 'load_more_articles_handler');
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
+function load_more_articles_handler() {
+    // Logica per caricare più articoli
 
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
+    wp_die();
 }
+
+function create_custom_post_types() {
+
+    // Register AI Post Type
+    register_post_type('ai', array(
+        'labels' => array(
+            'name' => __('AI'),
+            'singular_name' => __('AI')
+        ),
+        'public' => true,
+        'has_archive' => true,
+		'show_in_nav_menus' => true,
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+        'menu_icon' => 'dashicons-smartphone', // Example icon
+		'taxonomies'  => array('category'),
+    ));
+
+    // Register Tech Post Type
+    register_post_type('tech', array(
+        'labels' => array(
+            'name' => __('Tech'),
+            'singular_name' => __('Tech')
+        ),
+        'public' => true,
+        'has_archive' => true,
+		'show_in_nav_menus' => true,
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+        'menu_icon' => 'dashicons-desktop',
+		'taxonomies'  => array('category'),
+ // Example icon
+    ));
+
+    // Register Dev Post Type
+    register_post_type('dev', array(
+        'labels' => array(
+            'name' => __('Dev'),
+            'singular_name' => __('Dev')
+        ),
+        'public' => true,
+        'has_archive' => true,
+		'show_in_nav_menus' => true,
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+        'menu_icon' => 'dashicons-hammer',
+		'taxonomies'  => array('category'),
+ // Example icon
+    ));
+
+    // Register Society Post Type
+    register_post_type('society', array(
+        'labels' => array(
+            'name' => __('Society'),
+            'singular_name' => __('Society')
+        ),
+        'public' => true,
+        'has_archive' => true,
+		'show_in_nav_menus' => true,
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+        'menu_icon' => 'dashicons-groups',
+		'taxonomies'  => array('category'),
+ // Example icon
+    ));
+
+    // Register AI Tools Post Type
+    register_post_type('ai-tools', array(
+        'labels' => array(
+            'name' => __('AI Tools'),
+			'show_in_nav_menus' => true,
+            'singular_name' => __('AI Tool')
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+        'menu_icon' => 'dashicons-admin-tools',
+		'taxonomies'  => array('category'),
+    ));
+
+    // Register Guides Post Type
+    register_post_type('guides', array(
+        'labels' => array(
+            'name' => __('Guides'),
+			'show_in_nav_menus' => true,
+            'singular_name' => __('Guide')
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+        'menu_icon' => 'dashicons-welcome-learn-more',
+		'taxonomies'  => array('category'),
+    ));
+
+    // Register Experiences Post Type
+    register_post_type('experiences', array(
+        'labels' => array(
+            'name' => __('Experiences'),
+			'show_in_nav_menus' => true,
+            'singular_name' => __('Experience')
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+        'menu_icon' => 'dashicons-universal-access-alt',
+		'taxonomies'  => array('category'),
+ // Example icon
+    ));
+}
+
+add_action('init', 'create_custom_post_types');
+
+function remove_posts_menu() {
+   
+    // Remove the existing Posts menu
+    remove_menu_page('edit.php');
+}
+
+add_action('admin_menu', 'remove_posts_menu');
+
+function promptgenius_add_svg_to_menu( $items, $args ) {
+    // Check if the targeted menu is the 'secondary' menu
+    if ( $args->theme_location == 'secondary' ) {
+        // Define the SVG icon
+        $svg_icon = '<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0V6.25H6.25V0H0ZM18.75 0V6.25H25V0H18.75ZM9.375 9.375V15.625H15.625V9.375H9.375ZM0 18.75V25H6.25V18.75H0ZM18.75 18.75V25H25V18.75H18.75Z" fill="#00F0FF"/></svg>'; 
+
+        // Replace a specific placeholder or menu item title with the SVG icon
+        // Ensure to replace a unique and identifiable part of the menu item
+        $items = str_replace('>MORE<', '>MORE' . $svg_icon . '<', $items);
+    }
+
+    return $items;
+}
+add_filter( 'wp_nav_menu_items', 'promptgenius_add_svg_to_menu', 10, 2 );
+
+function crea_tassonomia_in_evidenza() {
+    $labels = array(
+        'name'              => 'In Evidenza',
+        'singular_name'     => 'In Evidenza',
+        'search_items'      => 'Cerca In Evidenza',
+        'all_items'         => 'Tutti In Evidenza',
+        'parent_item'       => 'Parente In Evidenza',
+        'parent_item_colon' => 'Parente In Evidenza:',
+        'edit_item'         => 'Modifica In Evidenza',
+        'update_item'       => 'Aggiorna In Evidenza',
+        'add_new_item'      => 'Aggiungi Nuovo In Evidenza',
+        'new_item_name'     => 'Nuovo Nome In Evidenza',
+        'menu_name'         => 'In Evidenza',
+    );
+
+    $args = array(
+        'hierarchical'      => false,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+    );
+
+    register_taxonomy('in_evidenza', array('ai', 'tech', 'dev', 'society','ai-tools', 'guides', 'experiences'), $args);
+}
+add_action('init', 'crea_tassonomia_in_evidenza');
 
