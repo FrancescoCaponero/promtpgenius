@@ -1,8 +1,12 @@
 .site-main {
     max-width: 1200px;
     width: 90%;
-    margin: 0 200px 140px auto;
+    margin: 0 auto 140px auto;
     position: relative;
+    @include breakpoint-xxl{
+        max-width: 1100px;
+        margin: 0 80px 140px auto;
+    }
 }
 
 .post-featured{
@@ -13,7 +17,7 @@
     padding-left: 7%;
     width: 90%;
     flex-wrap: wrap;
-    margin: 200px auto;
+    margin: 120px auto;
     &__lefty{
         max-width: 60%;
         display: flex;
@@ -48,6 +52,9 @@
     width: 90%;
     padding-left: 7%;
     margin: 0 auto 10rem auto;
+    @include breakpoint-xxl{
+        gap: 2rem;
+    }
 
         .post-featured-23{
             display: flex;
@@ -95,6 +102,10 @@
         padding: 3rem 0rem;
         border-bottom: 1px solid black;
         height: 260px;
+        @include breakpoint-xxl{
+            gap: 2rem;
+            width: 85%;
+        }
 
         &__lefty{
             display: flex;

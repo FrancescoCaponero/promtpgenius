@@ -40,12 +40,14 @@ get_header();
             echo '<p>[' . get_the_date() . ']</p>';
 			?>
 			</div>
+			<div class="img-wrap-single">
+				<?php
+				if ( has_post_thumbnail() ) {
+					the_post_thumbnail();
+				}
+				?>
+			</div>
 			<?php
-
-            // Visualizzazione dell'immagine in evidenza
-            if ( has_post_thumbnail() ) {
-                the_post_thumbnail();
-            }
 			?>
             <div class="content-single">
 				<?php the_content(); ?>
@@ -75,14 +77,21 @@ get_header();
 				?>
 					<div class="home-post">
 						<?php 
-						$category = get_the_category(); 
-						$firstCategorySlug = $category[0]->slug;
+						 $categories = get_the_category();
+						 $category_class = '';
+						 if ( ! empty( $categories ) ) {
+							 $category_name = $categories[0]->slug; 
+							 $category_class = 'category-' . $category_name;
+							 $firstCategorySlug = $categories[0]->slug;
+						 }
 						?>
 						<div class="home-post__lefty">
 							<a  href="<?php the_permalink(); ?>"><h5><?= the_title() ?></h5></a>
 							<div>
-								<a href="<?php echo esc_url( home_url( '/' ) . $firstCategorySlug ); ?>"><?= $category[0]->name; ?></a>
-								<p><?php the_author(); ?></p>
+							<a class="<?php echo $category_class; ?>" href="<?php echo esc_url( home_url( '/' ) . $firstCategorySlug ); ?>">
+                           	 <?php echo $categories[0]->name; ?>
+                        	</a>
+							<p><?php the_author(); ?></p>
 							</div>
 						</div>
 						<div class="home-post__center">

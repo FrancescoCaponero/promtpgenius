@@ -6,8 +6,34 @@ body {
     ul{
         li{
             a{
-               font-size: 36px;
+               font-size: 32px;
             }
+        }
+    }
+}
+.secondary-navigation{
+    ul{
+        li{
+            &:nth-child(2){
+                a{
+                    text-transform: uppercase;
+                }
+            }
+            
+            &:nth-child(3){
+                a{
+                    text-transform: lowercase;
+                    font-weight: 700;
+                }
+            }
+            &:nth-child(4){
+                a{
+                    text-transform: uppercase;
+                    font-weight: 200;
+                    font-size: 26px;
+                }
+            }
+            
         }
     }
 }
@@ -144,4 +170,9 @@ p{
 .category-ai-tools{
     font-weight: 300;
     text-transform: uppercase;
+}
+.page-template{
+    h1{
+        font-size: 2.4rem;
+    }
 }

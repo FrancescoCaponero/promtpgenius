@@ -1,8 +1,9 @@
 .main-navigation{
     position: fixed;
-    left:140px;
+    left:80px;
     top: 130px;
     z-index: 9999;
+    transition: all .3s ease-in-out;
     @include breakpoint-xl{
         left: 5%;
     }
@@ -70,9 +71,12 @@
 }
 .secondary-navigation{
     position: fixed;
-    left:10%;
+    left:80px;
     top: 130px;
+    z-index: 9999;
+    opacity: 0;
     visibility: hidden;
+    transition: all .4s ease-in-out;
     @include breakpoint-xl{
         left: 5%;
     }
@@ -90,8 +94,14 @@
                 text-decoration: none;
                 margin: 0 -.25rem;
                 padding: 0 .25rem;
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                svg{
+                    transform: translateY(3px);
+                }
                 &:hover{
-                    box-shadow: inset 100px 0 0 0 $primary-color;
+                    box-shadow: inset 140px 0 0 0 $primary-color;
                     color: white;
                 }
             }

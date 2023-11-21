@@ -16,6 +16,15 @@
         align-items: center;
         margin-bottom: 1.2rem;
     }
+    .img-wrap-single{
+        max-height: 400px;
+        overflow: hidden;
+        img{
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+        }
+    }
     .content-single{
         margin: 1.4rem 0rem;
         a{

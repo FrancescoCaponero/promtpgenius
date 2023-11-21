@@ -295,7 +295,7 @@ function promptgenius_add_svg_to_menu( $items, $args ) {
 
         // Replace a specific placeholder or menu item title with the SVG icon
         // Ensure to replace a unique and identifiable part of the menu item
-        $items = str_replace('>MORE<', '>MORE' . $svg_icon . '<', $items);
+        $items = str_replace('>LESS<', '>LESS' . $svg_icon . '<', $items);
     }
 
     return $items;
@@ -328,4 +328,3 @@ function crea_tassonomia_in_evidenza() {
     register_taxonomy('in_evidenza', array('ai', 'tech', 'dev', 'society','ai-tools', 'guides', 'experiences'), $args);
 }
 add_action('init', 'crea_tassonomia_in_evidenza');
-

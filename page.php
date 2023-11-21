@@ -14,22 +14,19 @@
 
 get_header();
 ?>
-
 	<main id="primary" class="site-main">
+		<div class="page-template">
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				?>
+					<h1><?=the_title();?></h1>
+				<?php
+				the_content();
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-		<button id="load-more">Carica Altri Articoli</button>
+			endwhile; // End of the loop.
+			?>
+		</div>
 	</main><!-- #main -->
-
 <?php
 get_footer();
