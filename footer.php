@@ -87,9 +87,12 @@
 			</div>
 			
 		</div><!-- .site-info -->
+		<?php
+			$this_year = date("Y");
+		?>
 		<div class="copy-claim">
 			<p>
-				© 2023 PromptGenius. Tutti i diritti riservati.
+				© <?= $this_year ?> PromptGenius. Tutti i diritti riservati.
 			</p>
 		</div>
 	</footer><!-- #colophon -->

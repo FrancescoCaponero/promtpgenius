@@ -20,8 +20,18 @@
 
 	<?php wp_head(); ?>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LQQ2HGQ63F"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LQQ2HGQ63F');
+</script>
 
 <body <?php body_class(); ?>>
+<div id="custom-cursor"></div>
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
@@ -40,6 +50,12 @@
 		</div>
 
 		<nav id="site-navigation" class="main-navigation">
+
+			<div id="search-bar">
+                <?php get_search_form(); ?>
+				<svg width="25" height="25" id="closex-search" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0V6.25H6.25V0H0ZM18.75 0V6.25H25V0H18.75ZM9.375 9.375V15.625H15.625V9.375H9.375ZM0 18.75V25H6.25V18.75H0ZM18.75 18.75V25H25V18.75H18.75Z" fill="white"></path></svg>
+            </div>
+			
 			<?php
 			wp_nav_menu(
 				array(

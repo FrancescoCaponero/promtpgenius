@@ -13,6 +13,11 @@ footer{
         max-width: 1200px;
         margin: 0 auto;
         width: 90%;
+        @include breakpoint-md{
+            flex-direction: column;
+            padding: 2rem 0rem;
+            align-items: flex-start;
+        }
         .about,.legal,.socials{
                 align-self: flex-start;
             ul{

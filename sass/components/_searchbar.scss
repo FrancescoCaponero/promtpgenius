@@ -1,0 +1,67 @@
+@keyframes opacAnim {
+    0%{
+        top: 0px;
+        opacity: 0;
+    }
+    100%{
+        top: 40px;
+        opacity: 1;
+    }
+}
+#search-bar {
+    transition: all .2s ease-in-out;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    display: none;
+    max-width: 400px;
+    width: 100%;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $primary-color;
+    padding: 10px 20px; 
+    z-index: 999999; 
+    animation: opacAnim .2s forwards;
+    @include breakpoint-xl{
+        background-color: white;
+        margin-top: 50px;
+    }
+
+    form {
+        display: flex; 
+        align-items: center; 
+
+        input[type="search"] {
+            flex: 1; 
+            font-size: 1.2rem;
+            background-color: $primary-color; 
+            @include breakpoint-xl{
+                background-color: white;
+            }
+
+            border: none;
+            &:focus{
+                border: none;
+                outline: none;
+            }
+        }
+
+        .search-submit {
+           display: none;
+        }
+    }
+
+    &.visible {
+        display: block; // Mostra la barra quando ha la classe .visible
+    }
+}
+input[type="search"]::-webkit-search-cancel-button {
+    display: none !important;
+}
+#closex-search{
+    &:hover{
+        opacity: .5;
+        transition: all .2s ease-in-out;
+    }
+}

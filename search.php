@@ -1,51 +1,92 @@
-<?php
-/**
- * The template for displaying search results pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package promptgenius
- */
+<?php get_header(); ?>
 
-get_header();
-?>
+<div id="primary">
+    <main id="main" class="site-main">
+    <?php
 
-	<main id="primary" class="site-main">
+    // QUERY PER I RISULTATI DELLA RICERCA
+    if ( have_posts() ) : 
+        while ( have_posts() ) : the_post(); 
+            ?>
+            <div class="search-result-item">
+                <div class="search-result-item__lefty">
+                    <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
+                </div>
+                <div class="search-result-item__center">
+                    <?php
+                        if ( has_post_thumbnail() ) {
+                            the_post_thumbnail();
+                        }
+                    ?>
+                </div>
+				<div class="search-result-item__righty">
+					<p><?php the_excerpt(); ?></p>
+				</div>
+            </div>
+            <?php
+        endwhile;
+    else :
+		echo '<div class="search-result-item">';
+		echo '<div height="300px" width="300px">&nbsp</div>';
+        echo '<h1>Nessun risultato trovato per la ricerca.</h1>';
+		echo '</div>';
+		
+    endif; 
+    ?>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'promptgenius' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-
-		endif;
+<div class="latest-posts">
+        <h2 class="latest-post-title">Out Latest Post</h2>
+		<?php
+		// QUERY LATEST POSTS
+		$query = new WP_Query(array(
+			'post_type' => array('ai', 'tech', 'dev', 'society','ai-tools','guides','experiences'),
+			'posts_per_page' => -1,
+		));
+		
+		if ($query->have_posts()) {
+			while ($query->have_posts()) {
+				$query->the_post();
+				?>
+					<div class="home-post">
+						<?php 
+						 $categories = get_the_category();
+						 $category_class = '';
+						 if ( ! empty( $categories ) ) {
+							 $category_name = $categories[0]->slug; 
+							 $category_class = 'category-' . $category_name;
+							 $firstCategorySlug = $categories[0]->slug;
+						 }
+						?>
+						<div class="home-post__lefty">
+							<a  href="<?php the_permalink(); ?>"><h5><?= the_title() ?></h5></a>
+							<div>
+							<a class="<?php echo $category_class; ?>" href="<?php echo esc_url( home_url( '/' ) . $firstCategorySlug ); ?>">
+                           	 <?php echo $categories[0]->name; ?>
+                        	</a>
+							<p><?php the_author(); ?></p>
+							</div>
+						</div>
+						<div class="home-post__center">
+							<?php
+								if ( has_post_thumbnail() ) {
+									the_post_thumbnail();
+								}
+							?>
+						</div>
+						<div class="home-post__righty">
+							<p><?php the_excerpt(); ?></p>
+						</div>
+					</div>
+				<?php
+			}
+		} else {
+			echo '<p>Nessun post trovato.</p>';
+		}
+		
+		wp_reset_postdata();
 		?>
+    </div>
+    </main><!-- #main -->
+</div><!-- #primary -->
 
-	</main><!-- #main -->
-
-<?php
-get_footer();
+<?php get_footer(); ?>

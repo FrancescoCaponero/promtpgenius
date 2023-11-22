@@ -4,4 +4,57 @@
 .active-secondary{
     visibility: visible;
     opacity: 1;
+    svg{
+        path{
+           @include breakpoint-md{
+            fill: white;
+           }
+        }
+    }
 }
+.active-mobile{
+    transform: translateY(0);
+}
+.active-mobile-header{
+    background-color: initial !important;
+    a{
+        background-color: white;
+        img{
+            background-color: white;
+        }
+    }
+    svg {
+        path{
+            fill: white !important;
+        }
+    }
+}
+
+.flex{
+    display: flex !important;
+    animation: opacAnim .2s forwards;
+}
+
+body {
+    cursor: none; // Nasconde il cursore predefinito
+  }
+  
+  #custom-cursor {
+    width: 15px;
+    height: 15px;
+    border: 1px solid black;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 999999999;
+    pointer-events: none; // Assicura che il div non interferisca con altri elementi
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease-out;
+  }
+  a{
+    cursor: none; // Impedisce che il cursore diventi una manina sui link
+  }
+  a:hover + #custom-cursor {
+    width: 45px;
+    height: 45px;
+  }
+  

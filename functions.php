@@ -328,3 +328,21 @@ function crea_tassonomia_in_evidenza() {
     register_taxonomy('in_evidenza', array('ai', 'tech', 'dev', 'society','ai-tools', 'guides', 'experiences'), $args);
 }
 add_action('init', 'crea_tassonomia_in_evidenza');
+
+function aggiungi_classe_a_p($content) {
+    $content = preg_replace('/<p([^>]+)?>/', '<p$1 class="excerpt">', $content);
+    return $content;
+}
+add_filter('the_excerpt', 'aggiungi_classe_a_p');
+
+function add_class_menu_search( $classes, $item, $args ) {
+    if ( 'primary' === $args->theme_location ) {
+        $menu_items = wp_get_nav_menu_items($args->menu);
+        if (!empty($menu_items) && $item->ID === $menu_items[0]->ID) {
+            $classes[] = 'search-bar';
+        }
+    }
+
+    return $classes;
+}
+add_filter( 'nav_menu_css_class', 'add_class_menu_search', 10, 3 );

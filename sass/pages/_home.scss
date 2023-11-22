@@ -7,7 +7,16 @@
         max-width: 1100px;
         margin: 0 80px 140px auto;
     }
+    @include breakpoint-xl{
+        max-width: 1100px;
+        margin: 120px 80px 140px auto;
+    }
+    @include breakpoint-md{
+        width: 90%;
+        margin: 0 auto;
+    }
 }
+
 
 .post-featured{
     display: flex;
@@ -18,10 +27,32 @@
     width: 90%;
     flex-wrap: wrap;
     margin: 120px auto;
+    @include breakpoint-md{
+       padding-left: 0;
+       flex-direction: column;
+    }
     &__lefty{
         max-width: 60%;
         display: flex;
         flex-direction: column;
+        @include breakpoint-md{
+            max-width: initial;
+         }
+         a{
+            h1{
+                transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+                box-shadow: inset 0 0 0 0 $primary-color;
+                &:hover{
+                    box-shadow: inset 100vw 0 0 0 $primary-color;
+                    color: white;
+                }
+            }
+         }
+        .excerpt{
+            @include breakpoint-md{
+                display: none;
+            }
+        }
         &--foot{
             display: flex;
             justify-content: space-between;
@@ -38,6 +69,11 @@
         width: 25%;
         overflow: hidden;
         align-self: flex-end;
+        @include breakpoint-md{
+            width: 100%;
+            height: 200px;
+            margin-top: 1rem;
+         }
         img{
             object-fit: cover;
             object-position: center;
@@ -55,6 +91,12 @@
     @include breakpoint-xxl{
         gap: 2rem;
     }
+    @include breakpoint-xl{
+        flex-direction: column;
+    }
+    @include breakpoint-md{
+        padding-left: 0;
+     }
 
         .post-featured-23{
             display: flex;
@@ -62,15 +104,31 @@
             justify-content: space-between;
 
             max-width: 500px;
+            @include breakpoint-xl{
+                max-width: initial;
+            }
             &__lefty{
                 max-width: 100%;
                 display: flex;
                 flex-direction: column;
+                a{
+                    h2{
+                        transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+                        box-shadow: inset 0 0 0 0 $primary-color;
+                        &:hover{
+                            box-shadow: inset 100vw 0 0 0 $primary-color;
+                            color: white;
+                        }
+                    }
+                 }
                 &--foot{
                     display: flex;
                     justify-content: space-between;
                     align-items: flex-end;
                     margin-top: .8rem;
+                    @include breakpoint-md{
+                        margin-top: 0;
+                    }
                     p{
                         margin: 0;
                         padding: 0;
@@ -83,6 +141,10 @@
                 overflow: hidden;
                 margin-top: 1rem;
                 align-self: flex-end;
+                @include breakpoint-md{
+                    display: none;
+                }
+
                 img{
                     object-fit: cover;
                     object-position: center;
@@ -106,6 +168,16 @@
             gap: 2rem;
             width: 85%;
         }
+        @include breakpoint-md{
+            padding-left: 0;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 0rem;
+            padding: 0rem;
+            gap:0rem;
+            height: 160px;
+            padding-bottom: 2rem;
+        }
 
         &__lefty{
             display: flex;
@@ -114,11 +186,27 @@
             max-width: 300px;
             align-self: flex-start;
             height: 100%;
+            a{
+                h5{
+                    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+                    box-shadow: inset 0 0 0 0 $primary-color;
+                    &:hover{
+                        box-shadow: inset 100vw 0 0 0 $primary-color;
+                        color: white;
+                    }
+                }
+             }
+            @include breakpoint-md{
+                max-width: initial;
+            }
         }
         &__center{
             height: 250px;
             width: 250px;
             overflow: hidden;
+            @include breakpoint-md{
+                display: none;
+            }
             img{
                 object-fit: cover;
                 object-position: center;
@@ -127,5 +215,13 @@
         }
         &__righty{
             max-width: 250px;
+        }
+    }
+
+    .home{
+        .excerpt{
+            @include breakpoint-md{
+                display: none;
+            }
         }
     }
