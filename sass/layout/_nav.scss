@@ -120,10 +120,19 @@
                 a{
                     display: flex;
                     justify-content: space-between;
+                    svg{
+                        height: 100%;
+                        transform: translateY(4px);
+                       path{
+                        @include breakpoint-xl{
+                            fill: black;
+                        }
+                       }
+                    }
                     &:hover{
                         svg{
                             path{
-                                fill: white;
+                                fill: white;     
                             }
                         }
                     }

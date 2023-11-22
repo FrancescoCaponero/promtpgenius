@@ -38,6 +38,7 @@
             background-color: $primary-color; 
             @include breakpoint-xl{
                 background-color: white;
+                font-size: 1.4rem;
             }
 
             border: none;
