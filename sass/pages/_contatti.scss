@@ -1,3 +1,27 @@
-.page-id-70{
-  
+.page-id-70{   
+        .page-template{
+            display: flex;
+            min-height:300px;
+            justify-content: space-between;
+            flex-direction: column;
+            padding-left: 7%;
+            width: 90%;
+            flex-wrap: wrap;
+            margin: 120px auto;
+            @include breakpoint-xl{
+                padding-left: 0;
+            }
+            h1{
+                font-size: 3.2rem;
+            }
+            a{
+                font-size: 1.7rem;
+                text-decoration: underline;
+                transition: all .2s ease-in-out;
+                &:hover{
+                    opacity: .6;
+                }
+            }
+        }
+    
 }

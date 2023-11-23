@@ -1,0 +1,20 @@
+// Stile di base per Contact Form 7
+.wpcf7 {
+    width: 90%; // Larghezza al 90%
+    max-width: 100%; // Evita che il form sfori
+    margin: 0 auto; // Centra il form
+
+    // Regola per tutti gli input e textarea
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+        width: 100%; // Larghezza piena
+        box-sizing: border-box; // Include padding e bordi nella larghezza
+    }
+
+    // Media query per schermi più grandi (es. tablet e desktop)
+    @media (min-width: 768px) {
+        // Regole specifiche per schermi più grandi, se necessario
+    }
+}

@@ -5,7 +5,7 @@
         width: 90%;
         margin: 1rem auto;
         position: fixed;
-        left: 80px;
+        left:40px;
         top: 20px;
         @include breakpoint-xl{
             justify-content: space-between;
@@ -55,7 +55,6 @@
             }
             @include breakpoint-xl{
                 display: block;
-                cursor: pointer;
             }
         }
     }

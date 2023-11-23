@@ -595,13 +595,25 @@ input[type=search]::-webkit-search-cancel-button {
   transition: all 0.2s ease-in-out;
 }
 
+.wpcf7 {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.wpcf7 input[type=text],
+.wpcf7 input[type=email],
+.wpcf7 input[type=tel],
+.wpcf7 textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
 .site-header .site-branding {
   display: flex;
   max-width: 1340px;
   width: 90%;
   margin: 1rem auto;
   position: fixed;
-  left: 80px;
+  left: 40px;
   top: 20px;
 }
 @media (max-width: 1280px) {
@@ -660,13 +672,12 @@ input[type=search]::-webkit-search-cancel-button {
 @media (max-width: 1280px) {
   .site-header .site-branding .ham-menu-mobile {
     display: block;
-    cursor: pointer;
   }
 }
 
 .main-navigation {
   position: fixed;
-  left: 80px;
+  left: 40px;
   top: 130px;
   z-index: 9999;
   transition: all 0.3s ease-in-out;
@@ -734,16 +745,16 @@ input[type=search]::-webkit-search-cancel-button {
 
 .secondary-navigation {
   position: fixed;
-  left: 80px;
+  left: 40px;
   top: 130px;
   z-index: 9999;
-  opacity: 0;
   visibility: hidden;
   transition: all 0.4s ease-in-out;
 }
 @media (max-width: 1280px) {
   .secondary-navigation {
     left: 5%;
+    opacity: 1;
   }
 }
 @media (max-width: 1280px) {
@@ -788,7 +799,12 @@ input[type=search]::-webkit-search-cancel-button {
 }
 .secondary-navigation ul li:first-child a svg {
   height: 100%;
-  transform: translateY(4px);
+  transform: translateY(2px);
+}
+@media (max-width: 1280px) {
+  .secondary-navigation ul li:first-child a svg {
+    transform: translateY(3px);
+  }
 }
 @media (max-width: 1280px) {
   .secondary-navigation ul li:first-child a svg path {
@@ -871,7 +887,7 @@ footer .copy-claim p {
 }
 
 .site-main {
-  max-width: 1200px;
+  max-width: 1000px;
   width: 90%;
   margin: 0 auto 140px auto;
   position: relative;
@@ -901,7 +917,6 @@ footer .copy-claim p {
   justify-content: space-between;
   align-items: center;
   padding-left: 7%;
-  width: 90%;
   flex-wrap: wrap;
   margin: 120px auto;
 }
@@ -968,9 +983,9 @@ footer .copy-claim p {
 .posts-flex-container {
   display: flex;
   justify-content: space-between;
-  width: 90%;
   padding-left: 7%;
   margin: 0 auto 10rem auto;
+  gap: 1rem;
 }
 @media (max-width: 1400px) {
   .posts-flex-container {
@@ -1155,7 +1170,6 @@ footer .copy-claim p {
   justify-content: space-between;
   align-items: center;
   padding-left: 7%;
-  width: 90%;
   flex-wrap: wrap;
   margin: 120px auto;
 }
@@ -1217,24 +1231,12 @@ footer .copy-claim p {
   margin: 3rem auto;
   padding: 3rem 0rem;
   left: 7%;
-  width: 90%;
   margin: 120px auto;
 }
 @media (max-width: 792px) {
   .latest-posts .excerpt {
     display: none;
   }
-}
-
-.page-template {
-  display: flex;
-  min-height: 300px;
-  justify-content: space-between;
-  flex-direction: column;
-  padding-left: 7%;
-  width: 90%;
-  flex-wrap: wrap;
-  margin: 120px auto;
 }
 
 .search-result-item {
@@ -1316,8 +1318,36 @@ footer .copy-claim p {
   align-items: center;
 }
 
+.page-id-70 .page-template {
+  display: flex;
+  min-height: 300px;
+  justify-content: space-between;
+  flex-direction: column;
+  padding-left: 7%;
+  width: 90%;
+  flex-wrap: wrap;
+  margin: 120px auto;
+}
+@media (max-width: 1280px) {
+  .page-id-70 .page-template {
+    padding-left: 0;
+  }
+}
+.page-id-70 .page-template h1 {
+  font-size: 3.2rem;
+}
+.page-id-70 .page-template a {
+  font-size: 1.7rem;
+  text-decoration: underline;
+  transition: all 0.2s ease-in-out;
+}
+.page-id-70 .page-template a:hover {
+  opacity: 0.6;
+}
+
 .active-main {
   opacity: 0;
+  visibility: hidden;
 }
 
 .active-secondary {

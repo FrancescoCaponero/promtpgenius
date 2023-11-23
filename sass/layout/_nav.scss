@@ -1,6 +1,6 @@
 .main-navigation{
     position: fixed;
-    left:80px;
+    left:40px;
     top: 130px;
     z-index: 9999;
     transition: all .3s ease-in-out;
@@ -72,14 +72,14 @@
 }
 .secondary-navigation{
     position: fixed;
-    left:80px;
+    left:40px;
     top: 130px;
     z-index: 9999;
-    opacity: 0;
     visibility: hidden;
     transition: all .4s ease-in-out;
     @include breakpoint-xl{
         left: 5%;
+        opacity: 1;
     }
     @include breakpoint-xl{
         inset: 0;
@@ -122,10 +122,15 @@
                     justify-content: space-between;
                     svg{
                         height: 100%;
-                        transform: translateY(4px);
+                        transform: translateY(2px);
+                        @include breakpoint-xl{
+                            transform: translateY(3px);
+
+                        }
                        path{
                         @include breakpoint-xl{
                             fill: black;
+
                         }
                        }
                     }

@@ -4,7 +4,6 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 7%;
-    width: 90%;
     flex-wrap: wrap;
     margin: 120px auto;
     @include breakpoint-md{
@@ -63,7 +62,6 @@
         margin: 3rem auto;
         padding: 3rem 0rem;
         left: 7%;
-        width: 90%;
         margin: 120px auto;
 
     }

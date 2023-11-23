@@ -1,5 +1,5 @@
 .site-main {
-    max-width: 1200px;
+    max-width: 1000px;
     width: 90%;
     margin: 0 auto 140px auto;
     position: relative;
@@ -24,7 +24,6 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 7%;
-    width: 90%;
     flex-wrap: wrap;
     margin: 120px auto;
     @include breakpoint-md{
@@ -85,9 +84,9 @@
 .posts-flex-container{
     display: flex;
     justify-content: space-between;
-    width: 90%;
     padding-left: 7%;
     margin: 0 auto 10rem auto;
+    gap: 1rem;
     @include breakpoint-xxl{
         gap: 2rem;
     }
