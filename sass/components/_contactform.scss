@@ -13,8 +13,18 @@
         box-sizing: border-box; // Include padding e bordi nella larghezza
     }
 
-    // Media query per schermi più grandi (es. tablet e desktop)
-    @media (min-width: 768px) {
-        // Regole specifiche per schermi più grandi, se necessario
+    .wpcf7-submit{
+        width: 100%;
+        margin-top: 1rem;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 2px;
+        transition: all .2s ease-in-out;
+        padding-bottom: 5px;
+        &:hover{
+            background-color: $primary-color;
+            color: white;
+            border: 1px solid transparent;
+        }
     }
 }

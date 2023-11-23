@@ -607,6 +607,21 @@ input[type=search]::-webkit-search-cancel-button {
   width: 100%;
   box-sizing: border-box;
 }
+.wpcf7 .wpcf7-submit {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 2px;
+  transition: all 0.2s ease-in-out;
+  padding-bottom: 5px;
+}
+.wpcf7 .wpcf7-submit:hover {
+  background-color: #00F0FF;
+  color: white;
+  border: 1px solid transparent;
+}
+
 .site-header .site-branding {
   display: flex;
   max-width: 1340px;
@@ -680,7 +695,7 @@ input[type=search]::-webkit-search-cancel-button {
   left: 40px;
   top: 130px;
   z-index: 9999;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 @media (max-width: 1280px) {
   .main-navigation {
@@ -749,7 +764,7 @@ input[type=search]::-webkit-search-cancel-button {
   top: 130px;
   z-index: 9999;
   visibility: hidden;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 @media (max-width: 1280px) {
   .secondary-navigation {
@@ -1101,6 +1116,7 @@ footer .copy-claim p {
 .home-post__lefty a h5 {
   transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   box-shadow: inset 0 0 0 0 #00F0FF;
+  margin-left: 0;
 }
 .home-post__lefty a h5:hover {
   box-shadow: inset 100vw 0 0 0 #00F0FF;
@@ -1153,6 +1169,7 @@ footer .copy-claim p {
 .archive a h2 {
   transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   box-shadow: inset 0 0 0 0 #00F0FF;
+  margin-left: 0;
 }
 .archive a h2:hover {
   box-shadow: inset 100vw 0 0 0 #00F0FF;
@@ -1222,6 +1239,7 @@ footer .copy-claim p {
 .latest-posts a h2 {
   transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   box-shadow: inset 0 0 0 0 #00F0FF;
+  margin-left: 0;
 }
 .latest-posts a h2:hover {
   box-shadow: inset 100vw 0 0 0 #00F0FF;
