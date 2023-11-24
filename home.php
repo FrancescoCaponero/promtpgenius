@@ -98,11 +98,15 @@
     else : 
         echo '<h1>Non ci sono post in evidenza da mostrare</h1>';
     endif; 
-
+    ?>
+    <!-- Visualizzazione degli ultimi post -->
+    <div class="latest-posts">
+        <h2 class="latest-post-title">Out Latest Post</h2>
+    <?
     // QUERY LATEST POSTS
     $query = new WP_Query(array(
         'post_type' => array('ai', 'tech', 'dev', 'society','ai-tools','guides','experiences'),
-        'posts_per_page' => -1,
+        'posts_per_page' => 5,
         'tax_query' => array(
             array(
                 'taxonomy' => 'in_evidenza',
@@ -152,10 +156,17 @@
     } else {
         echo '<p>Nessun post trovato.</p>';
     }
+    if ($query->found_posts > 5): 
+        ?>
+        <button id="load-more-posts" data-page="1" data-max="<?php echo $query->max_num_pages; ?>">
+            <h4>More Articles</h4>
+        </button>
+    <?php
+    endif;
     
     wp_reset_postdata();
     ?>
-
+    </div>
     </main><!-- #main -->
 </div><!-- #primary -->
 

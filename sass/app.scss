@@ -13,6 +13,8 @@
 @import 'components/_forms.scss';
 @import 'components/_searchbar.scss';
 @import 'components/_contactform.scss';
+@import 'components/_socialshares.scss';
+@import 'components/_loadmorebtn.scss';
 
 // Import layout styles
 @import 'layout/_header.scss';
@@ -32,6 +34,7 @@
 @import 'utilities/_helpers.scss';
 @import 'utilities/_animations.scss';
 @import 'utilities/_transitions.scss';
+@import 'utilities/_darkmode.scss';
 
 // Import vendor styles
 @import 'vendors/_bootstrap.scss';

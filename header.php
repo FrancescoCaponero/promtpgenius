@@ -75,3 +75,13 @@
 			?>
 		</nav>
 	</header><!-- #masthead -->
+	<a id="darkmodebtn">
+		<div class="inner-div">
+			<div class="inner-div__inner-left">
+				
+			</div>
+			<div class="inner-div__inner-right">
+				
+			</div>
+		</div>
+	</a>

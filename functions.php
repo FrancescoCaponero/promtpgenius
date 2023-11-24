@@ -149,12 +149,11 @@ add_action( 'widgets_init', 'promptgenius_widgets_init' );
 function promptgenius_scripts() {
     wp_enqueue_style('promptgenius-style', get_stylesheet_uri(), array(), _S_VERSION);
 
-    wp_enqueue_script('promptgenius-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
-    wp_enqueue_script('promptgenius-custom-script', get_template_directory_uri() . '/js/script.js', array('jquery'), _S_VERSION, true);
-
     // Aggiungi qui il tuo script ajaxEvents.js
     wp_enqueue_script('ajax-events-script', get_template_directory_uri() . '/js/ajaxEvents.js', array('jquery'), null, true);
     wp_localize_script('ajax-events-script', 'my_ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('promptgenius-custom-script', get_template_directory_uri() . '/js/script.js', array('jquery'), _S_VERSION, true);
+
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -162,15 +161,6 @@ function promptgenius_scripts() {
 }
 add_action('wp_enqueue_scripts', 'promptgenius_scripts');
 
-// HANDLER AJAX
-add_action('wp_ajax_load_more_articles', 'load_more_articles_handler');
-add_action('wp_ajax_nopriv_load_more_articles', 'load_more_articles_handler');
-
-function load_more_articles_handler() {
-    // Logica per caricare più articoli
-
-    wp_die();
-}
 
 function create_custom_post_types() {
 
@@ -346,3 +336,32 @@ function add_class_menu_search( $classes, $item, $args ) {
     return $classes;
 }
 add_filter( 'nav_menu_css_class', 'add_class_menu_search', 10, 3 );
+
+
+add_action('wp_ajax_load_more_posts', 'load_more_posts');
+add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts');
+function load_more_posts() {
+    $query_vars = json_decode( stripslashes( $_POST['query'] ), true );
+    $query_vars['paged'] = $_POST['page'] + 1;
+    $query_vars['posts_per_page'] = 5;
+    $query_vars['post_status'] = 'publish';
+    $query_vars['post_type'] = array('ai', 'tech', 'dev', 'society', 'ai-tools', 'guides', 'experiences');
+
+    $posts = new WP_Query( $query_vars );
+    $output = '';
+    if ($posts->have_posts()) : 
+        while ($posts->have_posts()) : $posts->the_post();
+            ob_start();
+            get_template_part('template-parts/content', 'post');
+            $output .= ob_get_clean();
+        endwhile;
+    endif;
+
+    $response = [
+        'content' => $output,
+        'next_page' => $query_vars['paged'],
+        'max_page' => $posts->max_num_pages
+    ];
+    wp_send_json($response);
+}
+

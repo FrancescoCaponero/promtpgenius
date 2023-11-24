@@ -1,0 +1,105 @@
+.dark-mode{
+    background: black;
+    p,h1,h2,h3,h4,h5,a{
+        color: $primary-color;
+    }
+    .home-post{
+        border-bottom: 1px solid white;
+    }
+    footer{
+        h4,p,a{
+            color: black;
+        }
+    }
+    @include breakpoint-xl{
+        .menu-menu-1-container,.menu-menu-2-container{
+            a{
+                color: black;
+            }
+        }
+    }
+    #custom-cursor {
+    border: 1px solid white;
+    }
+    .main-navigation ul li:last-child a::after{
+    border-left: 1px solid $primary-color;
+    border-bottom: 1px solid $primary-color;
+    }
+    #darkmodebtn{
+        background-color: black;
+        box-shadow: none;
+        .inner-div{
+            box-shadow: none;
+        }
+    }
+    .site-branding{
+        background-color: transparent;
+    }
+    .social-share-buttons__links{
+        a{
+            svg{
+                path{
+                    fill: white;
+                }
+            }
+        }
+    }
+    
+
+}
+
+
+#darkmodebtn {
+    position: fixed;
+    box-shadow: 1px 1px 2px 2px rgb(234, 234, 234);
+    top: 2rem;
+    right: 50px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 999999;
+    border-radius: 50px;
+    padding: 5px;
+    color: black;
+    font-size: 1rem;
+    .inner-div{
+        background-color: rgb(41, 41, 41);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        overflow: hidden;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 18px;
+        height: 18px;
+        &__inner-left{
+            left: 30%;
+            top: 50%;
+            background-color: black;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
+            position: absolute;
+            z-index: 999;
+        }
+        &__inner-right{
+            left: 50%;
+            background-color: white;
+            top: 50%;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
+            position: absolute;
+            z-index: 998;
+        }
+    }
+
+    @include breakpoint-xl{
+        top: initial;
+        bottom: 2rem;
+    }
+  }

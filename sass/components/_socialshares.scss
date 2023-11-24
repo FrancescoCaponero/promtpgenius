@@ -1,0 +1,46 @@
+.social-share-buttons{
+    margin-top: 2rem;
+    width: 100%;
+    h4{
+        font-size: 1.2rem;
+    }
+    &__links{
+        max-width: 500px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a{
+            svg{
+                width: 30px;
+            }
+        }
+    }
+}
+.modal-copy{
+    visibility: hidden;
+}
+.active-modal{
+    visibility: visible;
+    position: fixed;
+    background-color: black;
+    left: 0;
+    top: 0;
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include breakpoint-xl{
+        top: 80px;
+        height: 70px;
+    }
+
+    h3{
+       color: white;
+        font-size: 2rem;
+        @include breakpoint-xl{
+           font-size: 1.2rem;
+        }
+    }
+}
