@@ -675,22 +675,20 @@ input[type=search]::-webkit-search-cancel-button {
 #load-more-posts {
   width: 80%;
   height: 80px;
-  background-color: black;
-  color: white;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
+  border: 1px solid black;
+  color: black;
   margin: 0 auto;
+  cursor: inherit;
 }
 @media (max-width: 1280px) {
   #load-more-posts {
     width: 100%;
     margin: 2.5rem auto;
   }
-}
-#load-more-posts h4 {
-  font-size: 1rem;
 }
 
 .site-header .site-branding {
@@ -1538,6 +1536,13 @@ a:hover + #custom-cursor {
 }
 .dark-mode .social-share-buttons__links a svg path {
   fill: white;
+}
+.dark-mode #load-more-posts {
+  border: 1px solid white;
+  color: white;
+}
+.dark-mode #load-more-posts svg path {
+  fill: white !important;
 }
 
 #darkmodebtn {

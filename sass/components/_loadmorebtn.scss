@@ -1,18 +1,16 @@
 #load-more-posts{
     width: 80%;
     height: 80px;
-    background-color: black;
-    color: white;
+    background-color: transparent;
     display:flex;
     justify-content: center;
     align-items: center;
-    border: none;
-    margin: 0 auto;
+    border: 1px solid black;
+    color: black;
+    margin: 0 auto;        
+    cursor: inherit;
     @include breakpoint-xl{
         width: 100%;
         margin: 2.5rem auto;
-    }
-    h4{
-        font-size: 1rem;
     }
 }

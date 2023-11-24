@@ -44,7 +44,15 @@
             }
         }
     }
-    
+    #load-more-posts{
+        border: 1px solid white;
+        color: white;
+        svg{
+            path{
+                fill: white !important;
+            }
+        }
+    }
 
 }
 
