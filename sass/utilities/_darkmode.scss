@@ -24,6 +24,10 @@
     .main-navigation ul li:last-child a::after{
     border-left: 1px solid $primary-color;
     border-bottom: 1px solid $primary-color;
+        @include breakpoint-xl{
+            border-left: 1px solid black;
+            border-bottom: 1px solid black;
+        }
     }
     #darkmodebtn{
         background-color: black;

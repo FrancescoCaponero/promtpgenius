@@ -5,6 +5,9 @@
 .active-secondary{
     visibility: visible;
     opacity: 1;
+    @include breakpoint-xl{
+        transform: translateY(0%);
+    }
     svg{
         path{
            @include breakpoint-md{
@@ -50,6 +53,9 @@ body {
     pointer-events: none; // Assicura che il div non interferisca con altri elementi
     transform: translate(-50%, -50%);
     transition: transform 0.2s ease-out;
+    @include breakpoint-md{
+        display: none;
+    }
   }
   a{
     cursor: none; // Impedisce che il cursore diventi una manina sui link

@@ -12,10 +12,9 @@
             top: 0;
             background-color: white;
             z-index: 99999;
-            margin: 0 auto;
-            padding: 1rem 0rem;
-            left: 50%;
-            transform: translateX(-50%);
+            margin: initial;
+            left: 0;
+            width: 100%;
         }
         a:nth-child(2){
             position: absolute;
@@ -25,6 +24,7 @@
             opacity: .5;
             @include breakpoint-xl{
                 top: 1rem;
+                display: none;
             }
         }
         .custom-logo-link{
@@ -33,11 +33,14 @@
             @include breakpoint-xl{
                 width: 30px;
                 height: 45px;
+                margin-left: 1rem;
+                margin-top: 1rem;
             }
             img{
                 object-fit: contain;
                 object-position: left;
                 height: 100%;
+                width: fit-content;
             }
             &:hover{
                 &:nth-child(2){
@@ -51,6 +54,8 @@
                 @include breakpoint-xl{
                     width: 30px;
                     height: 45px;
+                    margin-right: 1rem;
+                    margin-top: 1rem;
                 }
             }
             @include breakpoint-xl{
